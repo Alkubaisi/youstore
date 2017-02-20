@@ -1,12 +1,29 @@
 // Your footer style
 /* Footer design */
 .footer {
-  background-color: grey;
-  display: flex;
-}
+  height: 150px;
+  background-color: #EFEFEF;
+  position: relative;
+  margin-top: 60px;
 
-.footer i {
-  color: white;
-  font-size: 30px;
-  padding: 20px;
+}
+.sociallist {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+
+}
+.lilist {
+
+  color: #D23333;
+}
+.lilist:hover  {
+
+  color: black;
+}
+#newsletter {
+  position: absolute;
+  left: 20px;
+  font-size: 14px;
+
 }
