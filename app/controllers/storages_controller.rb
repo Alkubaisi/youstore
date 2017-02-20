@@ -69,6 +69,6 @@ class StoragesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def storage_params
-      params.require(:storage).permit(:title, :size, :description)
+      params.require(:storage).permit(:title, :size, :description, :photo)
     end
 end
