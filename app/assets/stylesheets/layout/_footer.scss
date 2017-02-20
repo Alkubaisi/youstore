@@ -1,12 +1,16 @@
-// Your footer style
-/* Footer design */
-.footer {
-  background-color: grey;
-  display: flex;
+.footerwrap {
+  position: relative;
+  background-color: #F7F7F7;
+  height: 150px;
 }
-
-.footer i {
-  color: white;
-  font-size: 30px;
-  padding: 20px;
+.sociallist {
+  right: 10px;
+  bottom: 5px;
+  position: absolute;
+  color: #D23333;
+}
+.emailform {
+  left: 15px;
+  bottom: 35px;
+  position: absolute;
 }
