@@ -1,13 +1,18 @@
-<%= simple_form_for(@storage) do |f| %>
+<div class="add-form">
+  <h2>Add your storage type</h2>
+
+  <%= simple_form_for(@storage) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :size %>
-    <%= f.input :description %>
+    <%= f.input :title, input_html: { placeholder: "Title of storage" } %>
+    <%= f.input :size , input_html: { placeholder: "In sqaure foot" } %>
+    <%= f.input :description, input_html: { placeholder: "Description" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+
+    <%= f.button :submit, {class: "btn btn-primary" } %>
+    <% end %>
   </div>
-<% end %>
+</div>
