@@ -1,1 +1,12 @@
 // Your footer style
+/* Footer design */
+.footer {
+  background-color: grey;
+  display: flex;
+}
+
+.footer i {
+  color: white;
+  font-size: 30px;
+  padding: 20px;
+}
