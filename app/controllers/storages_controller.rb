@@ -10,6 +10,7 @@ class StoragesController < ApplicationController
   # GET /storages/1
   # GET /storages/1.json
   def show
+    @booking = Booking.new
   end
 
   # GET /storages/new
