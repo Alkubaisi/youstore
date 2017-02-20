@@ -1,2 +1,21 @@
 class Storage < ApplicationRecord
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
