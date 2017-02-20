@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Attachinary::Engine => "/attachinary"
   resources :storages
   devise_for :users
   root to: 'storages#index'

@@ -1,19 +1,63 @@
-<p id="notice"><%= notice %></p>
+<div class="banner banner-show" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url 'attic.jpg' %>');">
+  <div class="banner-content">
+    <h1>Spacious Attic</h1>
+    <p>Large space with good access</p>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @storage.title %>
-</p>
+<div class="container" id="storage-show-details">
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="row">
+        <div class="col-xs-4">
+         <p> <%= image_tag 'attic.jpg', class: 'avatar-large' %> </p>
+          <strong>Harry Bennett</strong>
+          <p>Host</p>
+        </div>
+        <div class="col-xs-8">
+          <h3>Large Attic space for self storage</h3>
+          <div class="storage-specs">
+           <div class="text-center">
+            <i class="fa fa-pie-chart" aria-hidden="true"></i>
+            <p><%= @storage.size %></p>
+          </div>
 
-<p>
-  <strong>Size:</strong>
-  <%= @storage.size %>
-</p>
+          <div class="text-center">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <p><%= @storage.term %></p>
+          </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @storage.description %>
-</p>
+          <div class="text-center">
+            <i class="fa fa-university" aria-hidden="true"></i>
+            <p><%= @storage.category %></p>
+          </div>
+        </div>
+      </div>
 
-<%= link_to 'Edit', edit_storage_path(@storage) %> |
-<%= link_to 'Back', storages_path %>
+    </div>
+    <div class="row" id="storage-show-description">
+      <div class="col-xs-12">
+        <p> Stylish 1 bedroom flat in the heart of trendy Sea Point! Located on Beach Road, the unit features side sea views and is a stone’s throw from shops, restaurants, bars, promenade and the famous Sea Point Pool. Enjoy a day exploring Cape Town, then retreat to an oceanfront oasis to curl up with a good book or glass of wine and watch the sunset.</p>
+        <iframe width="750" height="250"  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key= AIzaSyC2wZotirQuQ1KcjLPqo4b8IN0HXqtBOu0&q=Space+Needle,Seattle+WA">
+        </iframe>
+        <div>
+          <%= link_to 'Edit', edit_storage_path(@storage) %> |
+          <%= link_to 'Back', storages_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-xs-4">
+    <div id="storage-show-form">
+      <p>
+        <%= link_to "Ask the host a question", '#', class: 'btn btn-primary' %>
+      </p>
+      <h4>Book Now</h4>
+      <%= render partial: 'form' %>
+    </div>
+  </div>
+</div>
+</div>
+
