@@ -4,9 +4,10 @@
 
   <div class="form-inputs">
     <%= f.input :title, input_html: { placeholder: "Title of storage" } %>
+    <%= f.input :city , input_html: { placeholder: "city" } %>
     <%= f.input :size , input_html: { placeholder: "In sqaure foot" } %>
     <%= f.input :description, input_html: { placeholder: "Description" } %>
-  <%= f.input :term, :collection => ["short term", "long term"] %>
+    <%= f.input :term, :collection => ["short term", "long term"] %>
     <%= f.input :price, input_html: { placeholder: "price per night in £" } %>
     <%= f.input :photo, as: :attachinary %>
   </div>

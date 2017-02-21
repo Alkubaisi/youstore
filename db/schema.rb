@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20170221164442) do
     t.string   "term"
     t.integer  "price"
     t.integer  "user_id"
+    t.string   "city"
     t.index ["user_id"], name: "index_storages_on_user_id", using: :btree
   end
 
