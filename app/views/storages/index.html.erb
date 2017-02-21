@@ -2,12 +2,12 @@
   <div class="banner-content">
     <h1>Rent Storage</h1>
     <h2>Safe, sound and secure, we have your storage needs sorted</h2>
-<form action="#" class="form-inline">
-      <input type="text" class="form-control input-lg" placeholder="From">
-      <input type="text" class="form-control input-lg" placeholder="to">
-      <select name="" id="" class="form-control input-lg">
-        <option value="1">short term</option>
-        <option value="2">long term</option>
+<form action="<%= storages_path %>" class="form-inline">
+      <input type="text" name='location' class="form-control input-lg" placeholder="city">
+<!--       <input type="text" class="form-control input-lg" placeholder="to">
+ -->      <select name="term" id="" class="form-control input-lg">
+        <option value="short term">short term</option>
+        <option value="long term">long term</option>
 
       </select>
       <input type="submit" class="btn btn-primary btn-lg" value="Search">
