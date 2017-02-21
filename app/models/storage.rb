@@ -5,7 +5,7 @@ class Storage < ApplicationRecord
   has_many :users, through: :bookings
 
   has_attachment :photo
-
+  validates :photo, presence: true
   validates :title, presence: true
   validates :size, presence: true
   validates :description, presence: true
