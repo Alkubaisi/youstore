@@ -6,6 +6,8 @@ class StoragesController < ApplicationController
   # GET /storages.json
   def index
     @storages = Storage.all
+    @storages = @storages.where(term: params[:term]) if params[:term]
+    # @storages = @storages.where(city: params[:city]) if params[:city]
   end
 
   # GET /storages/1
@@ -68,6 +70,6 @@ class StoragesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def storage_params
-      params.require(:storage).permit(:title, :size, :description, :photo, :term, :price)
+      params.require(:storage).permit(:title, :size, :description, :photo, :term, :price, :city)
     end
 end
