@@ -75,5 +75,8 @@ ActiveRecord::Schema.define(version: 20170221142320) do
 
   add_foreign_key "bookings", "storages"
   add_foreign_key "bookings", "users"
+<<<<<<< HEAD
+=======
   add_foreign_key "storages", "users"
+>>>>>>> master
 end
