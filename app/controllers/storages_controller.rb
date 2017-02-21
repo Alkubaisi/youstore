@@ -1,5 +1,6 @@
 class StoragesController < ApplicationController
   before_action :set_storage, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /storages
   # GET /storages.json
@@ -26,15 +27,11 @@ class StoragesController < ApplicationController
   # POST /storages.json
   def create
     @storage = Storage.new(storage_params)
-
-    respond_to do |format|
-      if @storage.save
-        format.html { redirect_to @storage, notice: 'Storage was successfully created.' }
-        format.json { render :show, status: :created, location: @storage }
-      else
-        format.html { render :new }
-        format.json { render json: @storage.errors, status: :unprocessable_entity }
-      end
+    @storage.user = current_user
+    if @storage.save
+      redirect_to @storage, notice: 'Storage was successfully created.'
+    else
+      render :new
     end
   end
 
