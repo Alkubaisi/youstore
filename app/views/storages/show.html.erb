@@ -1,7 +1,7 @@
-<div class="banner banner-show" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_url 'attic.jpg' %>');">
+<div class="banner banner-show" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path @storage.photo.path, height: 300, width: 400, crop: :fill %>');">
   <div class="banner-content">
-    <h1>Spacious Attic</h1>
-    <p>Large space with good access</p>
+    <h1>  <%= @storage.title  %></h1>
+
   </div>
 </div>
 
@@ -28,8 +28,8 @@
           </div>
 
           <div class="text-center">
-            <i class="fa fa-university" aria-hidden="true"></i>
-            <p><%= @storage.category %></p>
+            <i class="fa fa-usd" aria-hidden="true"></i>
+            <p><%= @storage.price %></p>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
     </div>
     <div class="row" id="storage-show-description">
       <div class="col-xs-12">
-        <p> Stylish 1 bedroom flat in the heart of trendy Sea Point! Located on Beach Road, the unit features side sea views and is a stone’s throw from shops, restaurants, bars, promenade and the famous Sea Point Pool. Enjoy a day exploring Cape Town, then retreat to an oceanfront oasis to curl up with a good book or glass of wine and watch the sunset.</p>
+        <p> <%= @storage.description %> </p>
         <iframe width="750" height="250"  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key= AIzaSyC2wZotirQuQ1KcjLPqo4b8IN0HXqtBOu0&q=Space+Needle,Seattle+WA">
         </iframe>
         <div>

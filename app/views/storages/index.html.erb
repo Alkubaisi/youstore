@@ -59,12 +59,13 @@ Book in to your preferred location. Don't pay a penny until you move your stuff 
 
       <div class="card" style="background-image: url('<%= cl_image_path storage.photo.path, height: 300, width: 400, crop: :fill %>');">
         <div class="card-category">
-           <h2><%= storage.title %></h2>
+           <h3><%= storage.title %></h3>
         </div>
        <div class="card-description">
 
-        <p><%= storage.description %></p>
-        <p>Size in sqft<%= storage.size %></p>
+        <p><%= storage.description.split(" ")[0..3].join(" ") %></p>
+
+        <p>Size in sqft<%= storage.size %> | Price: £<%= storage.price %></p>
 
       </div>
 
