@@ -7,7 +7,7 @@ class StoragesController < ApplicationController
   def index
     @storages = Storage.all
     @storages = @storages.where(term: params[:term]) if params[:term]
-    # @storages = @storages.where(city: params[:city]) if params[:city]
+    @storages = @storages.where(city: params[:city]) if params[:city]
   end
 
   # GET /storages/1
