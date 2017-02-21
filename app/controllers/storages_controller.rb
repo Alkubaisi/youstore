@@ -17,6 +17,7 @@ class StoragesController < ApplicationController
   # GET /storages/new
   def new
     @storage = Storage.new
+
   end
 
   # GET /storages/1/edit

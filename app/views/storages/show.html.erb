@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-xs-4">
          <p> <%= image_tag 'attic.jpg', class: 'avatar-large' %> </p>
-          <strong>Harry Bennett</strong>
+          <strong> <%= @storage.user.first_name %> <%= @storage.user.last_name %> </strong>
           <p>Host</p>
         </div>
         <div class="col-xs-8">
