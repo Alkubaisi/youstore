@@ -1,18 +1,4 @@
-<div class="add-form">
 <%= simple_form_for [@storage, @booking] do |f| %>
-  <%= f.error_notification %>
-
-<div class="form-inputs">
-<%= f.input :time_wanted, input_html: { placeholder: "Amount of days" } %>
-<%= f.input :prices, input_html: { placeholder: "Total price in £" } %>
-
-
-
-  </div>
-
-
-<div class="form-actions">
-    <%= f.button :submit, {class: "btn btn-primary" } %>
-  </div>
-  <% end %>
-</div>
+  <%= f.input :time_wanted %>
+  <%= f.submit "Submit your booking" %>
+<% end %>

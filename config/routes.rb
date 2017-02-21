@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'storages#index'
   get "/about", to: "pages#about"
+  get "/profile", to: "pages#profile"
 end
