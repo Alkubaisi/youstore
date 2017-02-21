@@ -17,6 +17,15 @@
     <%= link_to "Sign in with Facebook", omniauth_authorize_path(:user, :facebook) %>
 
 
+
+ <%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <%= link_to t(".sign_in", default: "About"), about_url, class: "navbar-wagon-item navbar-wagon-link" %>
+     <% if user_signed_in? %>
+
+    <% else %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
@@ -53,20 +62,19 @@
         </ul>
       </div>
     </div>
+     <%= link_to t(".top_call_to_action", default: "Add Storge"),  new_storage_path , class: "btn btn-primary" %>
 
     <% else %>
-
+     <%= link_to t(".top_call_to_action", default: "Become a host"),  new_user_registration_path , class: "btn btn-primary" %>
+  <% end %>
     <!-- Login text link -->
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <%= link_to t(".sign_in", default: "Home"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <%= link_to t(".sign_in", default: "About"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <% end %>
+
+
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Become a host"), "#", class: "btn btn-primary" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
