@@ -1,4 +1,13 @@
-<%= simple_form_for [@storage, @booking] do |f| %>
-  <%= f.input :time_wanted %>
-  <%= f.submit "Submit your booking" %>
-<% end %>
+<div class="add-form">
+  <%= simple_form_for([@storage, @booking]) do |f| %>
+    <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :from %>
+      <%= f.input :to %>
+      <%= f.input :price %>
+
+    </div>
+    <%= f.submit "Submit your booking" %>
+  <% end %>
+
+</div>
