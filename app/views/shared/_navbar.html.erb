@@ -21,6 +21,7 @@
  <%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <%= link_to t(".sign_in", default: "About"), about_url, class: "navbar-wagon-item navbar-wagon-link" %>
+
      <% if user_signed_in? %>
 
     <% else %>
@@ -62,6 +63,7 @@
      <%= link_to t(".top_call_to_action", default: "Add Storge"),  new_storage_path , class: "btn btn-primary" %>
 
     <% else %>
+
      <%= link_to t(".top_call_to_action", default: "Become a host"),  new_user_registration_path , class: "btn btn-primary" %>
   <% end %>
     <!-- Login text link -->
