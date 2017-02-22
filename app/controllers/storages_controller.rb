@@ -1,4 +1,6 @@
 class StoragesController < ApplicationController
+  # Association
+  # Call
   before_action :set_storage, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
 
@@ -8,12 +10,22 @@ class StoragesController < ApplicationController
     @storages = Storage.all
     @storages = @storages.where(term: params[:term]) if params[:term]
     @storages = @storages.where(city: params[:city]) if params[:city]
+
+
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+
   end
 
   # GET /storages/1
   # GET /storages/1.json
   def show
     @booking = Booking.new
+     @storages = Storage.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@storage) do |storage, marker|
+      marker.lat storage.latitude
+      marker.lng storage.longitude
+    end
   end
 
   # GET /storages/new
@@ -70,6 +82,6 @@ class StoragesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def storage_params
-      params.require(:storage).permit(:title, :size, :description, :photo, :term, :price, :city)
+      params.require(:storage).permit(:title, :size, :description, :photo, :term, :price, :city, :latitude, :longitude)
     end
-end
+  end

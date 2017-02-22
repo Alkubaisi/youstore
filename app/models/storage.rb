@@ -12,5 +12,8 @@ class Storage < ApplicationRecord
   validates :size, presence: true
     validates :price, presence: true
   validates :description, presence: true
+  geocoded_by :city
+  after_validation :geocode, if: :city_changed?
+
 
 end
