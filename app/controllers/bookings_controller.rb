@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
       # confirmed ? if true.save!: else Path_booking
     @booking.user = current_user
     @booking.storage = Storage.find(params[:storage_id])
+    raise
     @booking.save
     redirect_to root_path, notice: "booking completed"
   end
@@ -27,7 +28,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:time_wanted, )
+    params.require(:booking).permit(:from, :to, :price)
   end
 end
 
