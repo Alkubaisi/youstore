@@ -7,7 +7,7 @@ class StoragesController < ApplicationController
   # GET /storages
   # GET /storages.json
   def index
-    @storages = Storage.all
+    @storages = Storage.all.sample(3)
     @storages = @storages.where(term: params[:term]) if params[:term]
     @storages = @storages.where(city: params[:city]) if params[:city]
 
