@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   root to: 'storages#index'
   get "/about", to: "pages#about"
   get "/resultspage", to: "pages#resultspage"
-  get "/profile", to: "pages#profile"
 
+  resources :users, only: [:show]
 end
