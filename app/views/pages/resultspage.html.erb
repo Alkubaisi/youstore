@@ -1,30 +1,80 @@
+<div class="resultswrapper" style="margin-top: 50px; margin-bottom: 50px;">
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-md-8">
-      <%= image_tag 'attic.jpg', class: 'card' %>
+     <div class="container">
+  <div class="row">
+
+
+    <% @storages.each do |storage| %>
+    <div class="col-xs-12 col-md-4">
+
+      <div class="card" style="background-image: url('<%= cl_image_path storage.photo.path, height: 300, width: 400, crop: :fill %>');">
+        <div class="card-category">
+           <h3><%= storage.title %></h3>
+        </div>
+       <div class="card-description">
+
+        <p><%= storage.description.split(" ")[0..3].join(" ") %></p>
+
+        <h5>Size in sqft<%= storage.size %> | Price: £<%= storage.price %></h5>
+
+      </div>
+
+      <%= link_to "#", storage, class: "card-link" %>
+
+    </div>
+    <ul class="list-inline">
+  <% if user_signed_in? %>
+     <li>
+      <%= link_to edit_storage_path(storage) do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li>
+
+      <%= link_to storage, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+
+    </li>
+    <% end  %>
+ <% else %>
+ <% end %>
+  </ul>
+</div>
+
+<% end %>
+
+
+</div>
+</div>
+
       <%= image_tag 'attic.jpg', class: 'card' %>
     </div>
     <div class="col-xs-12 col-md-4">
-      <div id="map" style="width: 400px; height: 600px;">
-      </div>
-    </div>
-  </div>
+      <div id="map" style="width: 100%; height: 600px;">
+        <%= content_for(:after_js) do %>
+        <%= javascript_tag do %>
+        $(document).ready(function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+      handler.getMap().setZoom(14);
+    }
+  });
+});
+<% end %>
+<% end %>
+
+</div>
+</div>
+</div>
 </div>
 
-<%= content_for(:after_js) do %>
- <%= javascript_tag do %>
-   $(document).ready(function() {
-     var handler = Gmaps.build('Google');
-     handler.buildMap({ internal: { id: 'map' } }, function() {
-       markers = handler.addMarkers(<%= raw @hash.to_json %>);
-       handler.bounds.extendWith(markers);
-       handler.fitMapToBounds();
-       if (markers.length == 0) {
-         handler.getMap().setZoom(2);
-       } else if (markers.length == 1) {
-         handler.getMap().setZoom(14);
-       }
-     });
-   });
- <% end %>
-<% end %>
+</div>
