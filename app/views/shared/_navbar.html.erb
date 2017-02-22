@@ -1,3 +1,4 @@
+
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
@@ -18,9 +19,11 @@
 
 
 
- <%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-wagon-item navbar-wagon-link" %>
+<%= link_to t(".sign_in", default: "Home"), root_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <%= link_to t(".sign_in", default: "About"), about_url, class: "navbar-wagon-item navbar-wagon-link" %>
+<%= link_to t(".sign_in", default: "About"), about_url, class: "navbar-wagon-item navbar-wagon-link" %>
+<%= link_to t(".sign_in", default: "Listing"), results_url, class: "navbar-wagon-item navbar-wagon-link" %>
+
 
      <% if user_signed_in? %>
 
@@ -60,7 +63,7 @@
         </ul>
       </div>
     </div>
-     <%= link_to t(".top_call_to_action", default: "Add Storge"),  new_storage_path , class: "btn btn-primary" %>
+     <%= link_to t(".top_call_to_action", default: "Add Storage"),  new_storage_path , class: "btn btn-primary" %>
 
     <% else %>
 

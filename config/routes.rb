@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   end
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: 'storages#index'
+  root to: 'pages#home'
   get "/about", to: "pages#about"
-  get "/resultspage", to: "pages#resultspage"
+  get "/profile", to: "pages#profile"
+  resources :results
+ 
 
-  resources :users, only: [:show]
-end
