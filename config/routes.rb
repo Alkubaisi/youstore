@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :storages do
     resources :bookings
   end
+  resources :users, only: [:show]
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'storages#index'
