@@ -1,1 +1,128 @@
-<h1>Pages#home</h1>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(' <%= image_url 'home_banner.jpg' %> ');">
+  <div class="banner-content">
+    <h1>Rent Storage</h1>
+    <h2>Safe, sound and secure, we have your storage needs sorted</h2>
+<form action="<%= storages_path %>" class="form-inline">
+      <input type="text" name='city' class="form-control input-lg" placeholder="city">
+  <input type="text" class="form-control input-lg" placeholder="Start Date">
+      <select name="term" id="" class="form-control input-lg">
+        <option value="short term">short term</option>
+        <option value="long term">long term</option>
+
+      </select>
+      <input type="submit" class="btn btn-primary btn-lg" value="Search">
+    </form>
+    </div>
+  </div>
+
+  </div>
+</div>
+<!-- from her the 3 explention cols start -->
+<div class="wrapper">
+<div class="counter">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-4">
+    <%= image_tag 'world.png' %>
+      <p>1. <strong>BROWSE</strong> <br>
+
+Browse locations across London, or let us recommend one that's right for you</p>
+    </div>
+     <div class="col-xs-12 col-sm-4">
+       <%= image_tag 'book.png' %>
+      <p>2. <strong>BOOK</strong><br>
+
+Book in to your preferred location. Don't pay a penny until you move your stuff in</p>
+    </div>
+     <div class="col-xs-12 col-sm-4">
+     <%= image_tag 'store.png' %>
+      <p>3. <strong>STORE</strong><br>
+      Meet your Host and start storing.  Schedule an end date when you're ready</p>
+
+
+</div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<!-- from here cards start -->
+
+<div class="wrapper1">
+
+
+<div class="container">
+  <div class="row">
+
+
+    <% @storages.each do |storage| %>
+    <div class="col-xs-12 col-md-4">
+
+      <div class="card" style="background-image: url('<%= cl_image_path storage.photo.path, height: 300, width: 400, crop: :fill %>');">
+        <div class="card-category">
+           <h3><%= storage.title %></h3>
+        </div>
+       <div class="card-description">
+
+        <p><%= storage.description.split(" ")[0..3].join(" ") %></p>
+
+        <h5>Size in sqft<%= storage.size %> | Price: £<%= storage.price %></h5>
+
+      </div>
+
+      <%= link_to "#", storage, class: "card-link" %>
+
+    </div>
+    <ul class="list-inline">
+  <% if user_signed_in? %>
+     <li>
+      <%= link_to edit_storage_path(storage) do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li>
+
+      <%= link_to storage, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+
+    </li>
+    <% end  %>
+ <% else %>
+ <% end %>
+  </ul>
+</div>
+
+<% end %>
+
+
+</div>
+</div>
+
+
+</div>
+<!-- cardddddd end here -->
+
+<div class="counter">
+  <div class="row">
+    <div class="col-xs-12">
+<div style="text-align: center; margin-bottom: 20px;">
+       <%= link_to "Show more", results_path, class: "btn btn-primary btn-lg" %>
+   </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- MAPS START HERE -->
+
+
+
+
+
