@@ -7,7 +7,10 @@
 <div class="container">
   <div class="row">
    <div class="col-xs-12 col-md-8">
+
 <% @storages.each do |storage| %>
+ <%  if storage.user != current_user %>
+
     <div class="col-xs-12 col-md-4">
 
       <div class="card" style="background-image: url('<%= cl_image_path storage.photo.path, height: 300, width: 400, crop: :fill %>');">
@@ -25,24 +28,9 @@
       <%= link_to "#", storage, class: "card-link" %>
 
     </div>
-    <ul class="list-inline">
-  <% if user_signed_in? %>
-     <li>
-      <%= link_to edit_storage_path(storage) do %>
-      <i class="fa fa-pencil" aria-hidden="true"></i>
-      <% end %>
-    </li>
-    <li>
 
-      <%= link_to storage, method: :delete, data: { confirm: 'Are you sure?' } do %>
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-
-    </li>
-    <% end  %>
- <% else %>
- <% end %>
-  </ul>
   </div>
+  <% end %>
 <% end %>
 </div>
 

@@ -13,10 +13,14 @@ class StoragesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@storages) do |storage, marker|
         marker.lat storage.latitude
         marker.lng storage.longitude
+        marker.infowindow render_to_string(partial: "/storages/map_box", locals: { storage: storage })
+
+
+
     end
 
 
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+
 
   end
 
@@ -29,6 +33,8 @@ class StoragesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@storage) do |storage, marker|
       marker.lat storage.latitude
       marker.lng storage.longitude
+
+
     end
   end
 
