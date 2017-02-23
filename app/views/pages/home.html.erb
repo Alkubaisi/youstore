@@ -3,8 +3,21 @@
     <h1>Rent Storage</h1>
     <h2>Safe, sound and secure, we have your storage needs sorted</h2>
 <form action="<%= storages_path %>" class="form-inline">
-      <input type="text" name='city' class="form-control input-lg" placeholder="city">
+      <input type="text" name='city' class="form-control input-lg" placeholder="City">
+
+
+<div class="input-group date" data-provide="datepicker">
   <input type="text" class="form-control input-lg" placeholder="Start Date">
+  <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+    </div>
+
+
+
+</div>
+
+
+
       <select name="term" id="" class="form-control input-lg">
         <option value="short term">short term</option>
         <option value="long term">long term</option>
