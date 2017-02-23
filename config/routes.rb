@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   resources :storages do
-    resources :bookings
+    resources :bookings do
+      member do
+        post "/accept", to: "bookings#accept"
+        post "/decline", to: "bookings#decline"
+      end
+    end
   end
-  devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-
-
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'
-   # get "/profile", to: "pages#profile"
   get "/dashboard", to: "users#dashboard"
   get "/about", to: "pages#about"
   resources :results
-
-
-
 end

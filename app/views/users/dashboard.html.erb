@@ -7,35 +7,89 @@
 
 
 
-            <% avatar_url = current_user.facebook_picture_url || "https://dqjghx1vau0u.cloudfront.net/assets/default-user-avatars-small-d5efadcf497ea7b3d86c6f8d148d66633a29ce78fa8391af628adf32d9989354.png" %>
-            <%= image_tag avatar_url, class: 'avatar-large' %><br>
-            <strong style="text-transform: capitalize; text-align: center;"> <%= current_user.first_name %> <%= current_user.last_name %></strong>
+        <% avatar_url = current_user.facebook_picture_url || "https://dqjghx1vau0u.cloudfront.net/assets/default-user-avatars-small-d5efadcf497ea7b3d86c6f8d148d66633a29ce78fa8391af628adf32d9989354.png" %>
+        <%= image_tag avatar_url, class: 'avatar-large' %><br>
+        <strong style="text-transform: capitalize; text-align: center;"> <%= current_user.first_name %> <%= current_user.last_name %></strong>
 
-<ul class="list-inline">
-  <li> <%= link_to edit_user_registration_path(current_user) do %>
-        <i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile
-       </li> <% end %>
-</ul>
-
-
+        <ul class="list-inline">
+          <li> <%= link_to edit_user_registration_path(current_user) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile
+          </li> <% end %>
+        </ul>
 
 
-     </div>
-     <div class="col-xs-12 col-md-4">
-       <h3>Information:</h3>
-          <ul >
-            <li>Email: <%= current_user.email %></li>
-            <li>Date Joined: <%= current_user.created_at %></li>
-            <li>Last Log-in: <%= current_user.last_sign_in_at %> </li>
-          </ul>
+
 
       </div>
+      <div class="col-xs-12 col-md-4">
+       <h3>Information:</h3>
+       <ul >
+        <li>Email: <%= current_user.email %></li>
+        <li>Date Joined: <%= current_user.created_at %></li>
+        <li>Last Log-in: <%= current_user.last_sign_in_at %> </li>
+      </ul>
+
     </div>
   </div>
-  <!-- end of top divs -->
 </div>
+
+</div>
+<!-- end of top divs -->
+
+
+<!-- My request -->
+<div class="bokwrapper">
   <div class="container">
     <div class="row">
+     <h3>Bookings Wating for Approval:</h3>
+     <div class="col-xs-12 col-md-4">
+
+      <% current_user.storages.each do |storage| %>
+      <% storage.bookings.each do |booking|%>
+      <% if booking.status == "pending" %>
+      <ul>
+        <li><%= booking.storage.title %></li>
+        <li><%= booking.storage %></li>
+        <li>Created on: <%= booking.created_at %></li>
+        <li style="color: red;">Status: <%= booking.status %></li>
+        <li>From: <%= booking.from %></li>
+        <li>To: <%= booking.to %></li>
+        <li>Total: <%= booking.price %></li>
+      </ul>
+
+      <%= link_to "Accept", accept_storage_booking_path(storage, booking), :method=> :post, class: "btn btn-success" %>
+      <%= link_to "Decline", decline_storage_booking_path(storage, booking), :method=> :post, class: "btn btn-danger" %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+
+
+
+    <!-- A link to with post and somehow storage.id, booking.id -->
+<!-- <a class="btn btn-success" href="status => confirmed" role="button">Accept</a>
+  <a class="btn btn-danger" href="status => declined" role="button">Decline</a> -->
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- start of my storges listsing -->
+<div class="container">
+  <div class="row">
     <div class="col-xs-12 col-md-8">
       <h1>Your Storages:</h1>
       <% current_user.storages.each do |storage| %>
@@ -72,12 +126,38 @@
 
   <% end %>
 </div>
-  <!-- end of card -->
+<!-- end of card -->
+
+<!-- My bookings section -->
+
+<!-- The bookings of my storages -->
+<!-- Button to accept / button to decline -->
+
+<div class="col-xs-12 col-md-4">
+  <h1>My Bookings</h1>
+  <% current_user.bookings.each do |book| %>
+
+  <ul>
+    <li><%= book.storage.title %></li>
+    <li>Created on: <%= book.created_at %></li>
+    <li style="color: red;">Status: <%= book.status %></li>
+    <li>From: <%= book.from %></li>
+    <li>To: <%= book.to %></li>
+    <li>Total: <%= book.price %></li>
+  </ul>
+  <%= link_to "Cancel", storage_booking_path(book.storage, book), method: :delete, class: "btn btn-primary" %>
+  <hr>
 
 
-  <div class="col-xs-12 col-md-4">
-<h1>Bookings</h1>
-  </div>
+  <% end %>
+
+
+
+
+
+
+
+</div>
 
 </div>
 </div>
