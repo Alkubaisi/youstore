@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get "/about", to: "pages#about"
   get "/profile", to: "pages#profile"
   resources :results
- 
+ end
 
