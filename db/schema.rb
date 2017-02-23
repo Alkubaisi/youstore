@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20170222144214) do
 
   # These are extensions that must be enabled in order to support this database
@@ -44,11 +45,10 @@ ActiveRecord::Schema.define(version: 20170222144214) do
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
-  create_table "results", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "storages_id"
-    t.index ["storages_id"], name: "index_results_on_storages_id", using: :btree
+  create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
   end
 
   create_table "storages", force: :cascade do |t|
