@@ -16,11 +16,14 @@
           <p>Host</p>
         </div>
         <div class="col-xs-8">
-          <h3>Large Attic space for self storage</h3>
+
           <div class="storage-specs">
            <div class="text-center">
             <i class="fa fa-pie-chart" aria-hidden="true"></i>
-            <p><%= @storage.size %></p>
+
+            <p><%= @storage.size %> sq ft </p>
+
+
           </div>
 
           <div class="text-center">
@@ -30,7 +33,11 @@
 
           <div class="text-center">
             <i class="fa fa-usd" aria-hidden="true"></i>
-            <p>£<%= @storage.price %></p>
+
+
+
+            <p>£<%= @storage.price %> PW</p>
+
           </div>
         </div>
       </div>
@@ -71,19 +78,7 @@
   <% end %>
 <% end %>
 
-
-
-
-
-
-
-
-
-        <div><% if user_signed_in? %>
-          <%= link_to 'Edit', edit_storage_path(@storage) %> |
-          <%= link_to 'Back', storages_path %>
-        <% else %>
- <% end %>
+        <div>
         </div>
       </div>
     </div>
@@ -93,7 +88,7 @@
       <div class="col-xs-4">
         <div id="storage-show-form">
           <p>
-            <%= link_to "Ask the host a question", '#', class: 'btn btn-primary' %>
+            <%= mail_to @storage.user.email , "Ask the host a question", class: 'btn btn-primary' %>
           </p>
           <h4>Book Now</h4>
 

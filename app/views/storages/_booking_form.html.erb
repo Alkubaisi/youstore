@@ -2,12 +2,49 @@
   <%= simple_form_for([@storage, @booking]) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <%= f.input :from %>
-      <%= f.input :to %>
-      <%= f.input :price %>
+      <%= f.input :from, as: :string, input_html:{id: 'fromstart'} %>
+
+      <%= f.input :to, as: :string, input_html:{id: 'tofinish'}  %>
+
+      <%= f.input :price, input_html:{id: 'totalp'}  %>
 
     </div>
-    <%= f.submit "Submit your booking" %>
+    <%= f.submit "Submit your booking", class: "btn btn-primary" %>
   <% end %>
 
 </div>
+
+
+
+<%= content_for(:after_js) do %>
+
+  <script>
+
+
+    var date = new Date();
+
+    $('#fromstart').datepicker({
+      startDate: date,
+      format: 'dd/mm/yyyy'
+    });
+    $('#tofinish').datepicker({
+      startDate: date,
+      format: 'dd/mm/yyyy'
+    });
+
+    $("#tofinish").on("change", function(){
+      var start = $('#fromstart').datepicker('getDate')
+      var end = $('#tofinish').datepicker('getDate')
+      var time = 24*60*60*1000
+      var diffDays = Math.round(Math.abs((end - start)/(time)))
+      var dailyprice = '<%= @storage.price %>'
+      var totalprice = dailyprice * diffDays
+      $("#totalp").val(totalprice);
+    });
+
+
+  </script>>
+
+<% end %>
+
+

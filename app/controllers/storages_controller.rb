@@ -9,10 +9,18 @@ class StoragesController < ApplicationController
   def index
     @storages = Storage.all
     @storages = @storages.where(term: params[:term]) if params[:term]
-    @storages = @storages.where(city: params[:city]) if params[:city]
+    @storages = @storages.near(params[:city], 10) if params[:city]
+    @hash = Gmaps4rails.build_markers(@storages) do |storage, marker|
+        marker.lat storage.latitude
+        marker.lng storage.longitude
+        marker.infowindow render_to_string(partial: "/storages/map_box", locals: { storage: storage })
 
 
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+
+    end
+
+
+
 
   end
 
@@ -25,6 +33,8 @@ class StoragesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@storage) do |storage, marker|
       marker.lat storage.latitude
       marker.lng storage.longitude
+
+
     end
   end
 

@@ -4,7 +4,7 @@ class Storage < ApplicationRecord
   belongs_to :user
   has_many :users, through: :bookings
   has_attachment :photo
-
+  belongs_to :result
   validates :photo, presence: true
   validates :city, presence: true
   validates :term, presence: true
