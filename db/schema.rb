@@ -52,6 +52,18 @@ ActiveRecord::Schema.define(version: 20170223140443) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "storages_id"
+    t.index ["storages_id"], name: "index_results_on_storages_id", using: :btree
+  end
+
   create_table "storages", force: :cascade do |t|
     t.string   "title"
     t.integer  "size"
