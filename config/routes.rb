@@ -3,11 +3,12 @@ Rails.application.routes.draw do
   resources :storages do
     resources :bookings
   end
+  resources :contacts, only: [:new, :create]
   devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'storages#index'
   get "/about", to: "pages#about"
   get "/resultspage", to: "pages#resultspage"
   get "/profile", to: "pages#profile"
-
+  get "/submitted", to: "pages#submitted"
 end
