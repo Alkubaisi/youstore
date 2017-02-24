@@ -17,4 +17,13 @@ Rails.application.routes.draw do
   get "/submitted", to: "pages#submitted"
   resources :results
 
+  resources :storages, only: [ :index, :show ] do
+   resources :reviews, only: [:create]
+  end
+  resources :reviews, only: [:destroy]
+
 end
+
+
+
+

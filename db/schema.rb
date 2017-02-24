@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223140443) do
+
+ActiveRecord::Schema.define(version: 20170224110343) do
+
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +68,14 @@ ActiveRecord::Schema.define(version: 20170223140443) do
     t.index ["storages_id"], name: "index_results_on_storages_id", using: :btree
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "storage_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["storage_id"], name: "index_reviews_on_storage_id", using: :btree
+  end
+
   create_table "storages", force: :cascade do |t|
     t.string   "title"
     t.integer  "size"
@@ -106,5 +118,6 @@ ActiveRecord::Schema.define(version: 20170223140443) do
 
   add_foreign_key "bookings", "storages"
   add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "storages"
   add_foreign_key "storages", "users"
 end
