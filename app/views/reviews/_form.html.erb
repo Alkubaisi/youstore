@@ -1,0 +1,16 @@
+
+
+
+
+<div class="review-form">
+  <%= simple_form_for([ @storage, @review ]) do |f| %>
+  <%= f.error_notification %>
+  <div class="review-inputs">
+  <%= f.input :content, as: :text %>
+   <%= f.button :submit %>
+
+ </div>
+
+ <% end %>
+
+</div>

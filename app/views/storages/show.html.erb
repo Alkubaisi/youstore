@@ -49,6 +49,11 @@
 
 
 
+<h1><%= @storage.title %></h1>
+
+
+
+
 
 
 <div id="map" style="width: 100%; height: 300px;"></div>
@@ -77,21 +82,18 @@
 <% end %>
 
 
-<h1><%= @storage.name %></h1>
-
-<h2>
-  <%= pluralize @storage.reviews.size, "review" %>
-</h2>
-
-<div id="reviews">
-  <% if @restaurant.reviews.blank? %>
-    Be the first to leave a review for <%= @restaurant.name %>
+<div id= "reviews" >
+  <% if @storage.reviews.blank? %>
+    Be the first to leave a review for <%= @storage.title %>
   <% else %>
-    <% @restaurant.reviews.each do |review| %>
+    <% @storage.reviews.each do |review| %>
       <%= render 'reviews/show', review: review %>
+      <p><%= review.content %></p>
     <% end %>
   <% end %>
 </div>
+
+<%= render 'reviews/form', storage: @storage, review: @review %>
 
 
 

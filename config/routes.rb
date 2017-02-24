@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#dashboard"
   get "/about", to: "pages#about"
   resources :results
+  resources :storages, only: [ :index, :show ] do
+   resources :reviews, only: [:create]
+  end
+
 end

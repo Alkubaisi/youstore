@@ -39,7 +39,7 @@
 
 <ul>
   <% @storages.each do |storage| %>
-    <li><%= link_to storage_path.name, storage_path(storage) %></li>
+    <li><%= link_to storage.title, storage_path(storage) %></li>
   <% end %>
 </ul>
 

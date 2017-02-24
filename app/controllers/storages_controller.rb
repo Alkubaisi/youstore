@@ -27,6 +27,7 @@ class StoragesController < ApplicationController
   # GET /storages/1
   # GET /storages/1.json
   def show
+
     @booking = Booking.new
      @storages = Storage.where.not(latitude: nil, longitude: nil)
 
@@ -34,6 +35,8 @@ class StoragesController < ApplicationController
       marker.lat storage.latitude
       marker.lng storage.longitude
 
+    @storage = Storage.find(params[:id])
+    @review = Review.new
 
     end
   end
