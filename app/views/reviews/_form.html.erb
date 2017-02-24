@@ -3,14 +3,15 @@
 
 
 <div class="review-form">
-  <%= simple_form_for([ @storage, @review ]) do |f| %>
+  <%= simple_form_for([storage, review], remote: true) do |f| %>
   <%= f.error_notification %>
   <div class="review-inputs">
   <%= f.input :content, as: :text %>
-   <%= f.button :submit %>
+    <%= f.submit "Create Review", class: "btn btn-primary" %>
 
  </div>
 
  <% end %>
 
 </div>
+

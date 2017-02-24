@@ -1,17 +1,23 @@
 class ReviewsController < ApplicationController
-  def create
+
+def create
     @storage = Storage.find(params[:storage_id])
     @review = Review.new(review_params)
     @review.storage = @storage
-    if @review.save
-      redirect_to storage_path(@storage)
+   if @review.save
+      respond_to do |format|
+        format.html {redirect_to storage_path(@storage)}
+       format.js
+      end
     else
-      render 'storages/show'
+      respond_to do |format|
+        format.html {render 'storages/show'}
+        format.js #create.js.erb
+      end
     end
   end
 
   private
-
   def review_params
     params.require(:review).permit(:content)
   end
