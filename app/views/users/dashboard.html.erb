@@ -38,43 +38,62 @@
 
 
 <!-- My request -->
+
+
 <div class="bokwrapper">
   <div class="container">
     <div class="row">
-     <h3>Bookings Wating for Approval:</h3>
-     <div class="col-xs-12 col-md-4">
+     <h4>Bookings Wating for Approval:</h4>
+
 
       <% current_user.storages.each do |storage| %>
       <% storage.bookings.each do |booking|%>
       <% if booking.status == "pending" %>
-      <ul>
-        <li><%= booking.storage.title %></li>
-        <li><%= booking.storage %></li>
-        <li>Created on: <%= booking.created_at %></li>
-        <li style="color: red;">Status: <%= booking.status %></li>
-        <li>From: <%= booking.from %></li>
-        <li>To: <%= booking.to %></li>
-        <li>Total: <%= booking.price %></li>
-      </ul>
+<div class="col-xs-12 col-md-4">
+      <div class="dcard">
 
-      <%= link_to "Accept", accept_storage_booking_path(storage, booking), :method=> :post, class: "btn btn-success" %>
-      <%= link_to "Decline", decline_storage_booking_path(storage, booking), :method=> :post, class: "btn btn-danger" %>
-      <% end %>
-      <% end %>
-      <% end %>
+       <%= cl_image_tag booking.storage.photo.path, class: "dimg" %>
+       <div class="dcontainer">
+        <h4><b><%= booking.user.first_name %> <%= booking.user.last_name %></b></h4>
+        <p><%= booking.storage.title %></p>
+        <p><strong>From:</strong> <%= booking.from %> <strong>To:</strong> <%= booking.to %></p>
+        <p>Total: £<%= booking.price %></p>
+        <div style="text-align: center;">
+        <%= link_to "Accept", accept_storage_booking_path(storage, booking), :method=> :post, class: "btn btn-success" %>
+        <%= link_to "Decline", decline_storage_booking_path(storage, booking), :method=> :post, class: "btn btn-danger" %>
+</div>
+      </div>
     </div>
+    </div>
+      <% end %>
+    <% end %>
+    <% end %>
 
 
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- staaaaaaaart -->
+
+
+
+
+<!-- end -->
 
     <!-- A link to with post and somehow storage.id, booking.id -->
 <!-- <a class="btn btn-success" href="status => confirmed" role="button">Accept</a>
   <a class="btn btn-danger" href="status => declined" role="button">Decline</a> -->
 
-
-
-</div>
-</div>
-</div>
 
 
 
@@ -177,3 +196,8 @@
 
 
 </div>
+
+
+
+
+

@@ -262,7 +262,10 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   listen (~> 3.0.5)
+
+
   mail_form
+
   omniauth-facebook
   pg
   pry-byebug
