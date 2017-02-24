@@ -18,7 +18,32 @@
 }
 
 .bokwrapper {
-  background-color: #EFF0EF;
+  background-color: white;
   padding: 20px;
 
 }
+// card start
+
+
+.dcard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 300px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.dcard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.dimg {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    height: 150px;
+}
+
+.dcontainer {
+    padding: 2px 16px;
+}
+

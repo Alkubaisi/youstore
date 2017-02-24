@@ -1,0 +1,42 @@
+<html class="unique-html">
+<body class="unique-body">
+  <div class="wrapper-for-everything">
+    <div align="center">
+
+      <header id="header" class="info">
+        <h2>Enquiries</h2>
+        <div><h4><strong>Questions?</strong> <br />Feel free to contact us.</h4></div>
+      </header>
+      <div class="counter">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+
+            <div class="add-form">
+              <%= simple_form_for(@contact) do |f| %>
+              <%= f.error_notification %>
+
+              <div class="form-inputs">
+                <%= f.input :name, :required => false %>
+                <%= f.input :email, :required => false %>
+                <%= f.input :enquiry, :as => :text, :required => false %>
+              </div>
+
+              <div class="form-actions">
+                <%= f.button :submit, 'Send message', :class=> "btn btn-primary" %>
+              </div>
+            </div>
+            <% end %>
+
+            <div class="return-home-btn"> <%= link_to 'Back to Home Page', root_path, class: "btn btn-primary" %>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+
+

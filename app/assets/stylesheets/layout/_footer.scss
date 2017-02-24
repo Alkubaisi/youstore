@@ -1,11 +1,11 @@
 .footerwrap {
   position: relative;
   background-color: #F7F7F7;
-  height: 150px;
+  height: 220px;
 }
 .sociallist {
-  right: 10px;
-  bottom: 5px;
+  left: 20px;
+  bottom: 20px;
   position: absolute;
   color: #46BCEC;
 }
@@ -19,6 +19,19 @@ li:hover {
 
 .emailform {
   left: 15px;
-  bottom: 35px;
+  top: 20px;
   position: absolute;
+}
+.linkslist {
+  position: absolute;
+  left: 400px;
+  top: 20px;
+}
+.linkslist li {
+  margin: 0 0 3px 0;
+}
+.address {
+  position: absolute;
+    left: 600px;
+  top: 20px;
 }

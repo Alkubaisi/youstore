@@ -9,7 +9,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
+    <form action="/storages" class="navbar-wagon-search">
       <input type="text" class="navbar-wagon-search-input" placeholder="Search storage">
       <button type="submit" class="navbar-wagon-search-btn">
         <i class="fa fa-search"></i>
@@ -38,10 +38,18 @@
 
     <% end %>
 
+        <!-- Notification link-->
+    <a href="/dashboard" class="navbar-wagon-item navbar-wagon-link">
+      <div class="badge-container">
+        <i class="fa fa-envelope-o"></i>
+        <div class="badge badge-blue"><%= current_user.storages.map{|storage| storage.bookings.where(status: 'pending').count}.sum %></div>
+      </div>
+    </a>
+
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <% avatar_url = current_user.facebook_picture_url || "https://dqjghx1vau0u.cloudfront.net/assets/default-user-avatars-small-d5efadcf497ea7b3d86c6f8d148d66633a29ce78fa8391af628adf32d9989354.png" %>
+        <% avatar_url = current_user.facebook_picture_url || "http://hmp.me/6eq" %>
         <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
