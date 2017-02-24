@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-def create
+  def create
     @storage = Storage.find(params[:storage_id])
     @review = Review.new(review_params)
     @review.storage = @storage
@@ -14,6 +14,16 @@ def create
         format.html {render 'storages/show'}
         format.js #create.js.erb
       end
+    end
+  end
+
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    respond_to do |format|
+      format.html { redirect_to storage_path(@review.storage), notice: 'Review was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

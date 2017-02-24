@@ -93,12 +93,17 @@
   <% else %>
     <% @storage.reviews.each do |review| %>
       <%= render 'reviews/show', review: review %>
-      <p><%= review.content %></p>
+      <p>
+        <%= link_to review_path(review), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      </p>
     <% end %>
   <% end %>
 </div>
-
+<% if current_user %>
 <%= render 'reviews/form', storage: @storage, review: @review %>
+<% end %>
 
 
 
