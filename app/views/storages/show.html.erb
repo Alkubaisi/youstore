@@ -76,6 +76,37 @@
   <% end %>
 <% end %>
 
+
+<h1><%= @storage.name %></h1>
+
+<h2>
+  <%= pluralize @storage.reviews.size, "review" %>
+</h2>
+
+<div id="reviews">
+  <% if @restaurant.reviews.blank? %>
+    Be the first to leave a review for <%= @restaurant.name %>
+  <% else %>
+    <% @restaurant.reviews.each do |review| %>
+      <%= render 'reviews/show', review: review %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div>
         </div>
       </div>

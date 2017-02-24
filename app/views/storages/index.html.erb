@@ -35,7 +35,13 @@
 </div>
 
 
+<h1>Reviews</h1>
 
+<ul>
+  <% @storages.each do |storage| %>
+    <li><%= link_to storage_path.name, storage_path(storage) %></li>
+  <% end %>
+</ul>
 
 
 
