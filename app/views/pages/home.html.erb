@@ -93,23 +93,7 @@ Book in to your preferred location. Don't pay a penny until you move your stuff 
       <%= link_to "#", storage, class: "card-link" %>
 
     </div>
-    <ul class="list-inline">
-  <% if user_signed_in? %>
-     <li>
-      <%= link_to edit_storage_path(storage) do %>
-      <i class="fa fa-pencil" aria-hidden="true"></i>
-      <% end %>
-    </li>
-    <li>
 
-      <%= link_to storage, method: :delete, data: { confirm: 'Are you sure?' } do %>
-      <i class="fa fa-trash-o" aria-hidden="true"></i>
-
-    </li>
-    <% end  %>
- <% else %>
- <% end %>
-  </ul>
 </div>
 
 <% end %>
